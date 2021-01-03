@@ -1,0 +1,6 @@
+export * from './Actor'
+export * from './Director'
+export * from './Genre'
+export * from './Movie'
+export * from './Tag'
+export * from './Type'

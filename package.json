@@ -1,0 +1,112 @@
+{
+  "name": "VideoDB",
+  "version": "0.0.1",
+  "description": "Local video database",
+  "main": "public/build/main.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development electron .",
+    "dev": "rollup -cw",
+    "build": "rollup -c",
+    "postinstall": "electron-builder install-app-deps",
+    "package": "yarn build && electron-builder build",
+    "package-all": "yarn build && electron-builder build -mwl",
+    "package-linux": "yarn build && electron-builder build --linux",
+    "package-win": "yarn build && electron-builder build --win --x64"
+  },
+  "build": {
+    "productName": "VideoDB",
+    "appId": "io.github.sinedie.videodb",
+    "extraResources": [
+      {
+        "from": "static",
+        "to": "static"
+      }
+    ],
+    "extraFiles": [
+      {
+        "from": "resources/icon.ico",
+        "to": "resources/icon.ico"
+      }
+    ],
+    "files": [
+      "node_modules/",
+      "public/",
+      "public/build",
+      "package.json"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Multimedia"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    }
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "svelte",
+    "starter",
+    "svelte electron",
+    "svelte electron template",
+    "electron svelte"
+  ],
+  "author": {
+    "name": "EAR",
+    "email": "sinedie@protonmail.com"
+  },
+  "license": "WTF",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@tsconfig/svelte": "^1.0.10",
+    "electron": "^10.1.5",
+    "electron-builder": "^22.9.1",
+    "electron-reload": "^1.5.0",
+    "rollup": "^2.32.1",
+    "rollup-plugin-svelte": "^6.1.0",
+    "svelte": "^3.0.0",
+    "svelte-check": "^1.0.0",
+    "svelte-preprocess": "^4.0.0",
+    "tslib": "^2.0.3",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "cross-env": "^5.1.6",
+    "directory-tree": "^2.2.5",
+    "fs": "^0.0.1-security",
+    "matroska-subtitles": "^3.3.1",
+    "node-fetch": "^2.6.1",
+    "node-mpv": "^2.0.0-beta.1",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0"
+  }
+}
